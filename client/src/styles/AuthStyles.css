@@ -1,0 +1,68 @@
+/* Updated CSS for Amazon-style form */
+
+.form-container {
+  margin-top: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Adjusted to take up the full viewport height */
+  background-color: #f0f0f0; /* Changed background color to a light gray */
+}
+
+.form-container form {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 15px; /* Softened the box shadow */
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px; /* Added border radius for a modern look */
+  max-width: 400px; /* Added max-width for responsiveness */
+  width: 100%; /* Added for responsiveness */
+}
+
+.form-container form .title {
+  text-align: center;
+  margin-bottom: 15px;
+  font-weight: bold;
+  font-family: "Playfair Display", serif;
+  font-size: 24px; /* Increased font size for the title */
+  color: #333; /* Changed text color for better readability */
+}
+
+.form-container form input {
+  border: none;
+  border-bottom: 1px solid #ccc; /* Softened the input border color */
+  border-radius: 4px; /* Added border radius for input fields */
+  margin-bottom: 10px;
+  padding: 12px; /* Increased padding for better input spacing */
+  width: 100%; /* Added for responsiveness */
+  font-size: 16px; /* Increased font size for input fields */
+}
+
+.form-container form button {
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff; /* Changed button background color to blue */
+  color: white;
+  width: 100%;
+  padding: 12px;
+  cursor: pointer;
+  font-size: 18px; /* Increased font size for the button text */
+  transition: background-color 0.3s ease; /* Added smooth hover transition */
+}
+
+.form-container form button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.forgot-btn {
+  background-color: #0889c5 !important;
+  border: none !important;
+  color: white !important;
+  text-decoration: none !important;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+
+.forgot-btn:hover {
+  background-color: #60b4e0 !important; /* Darker blue on hover */
+}

@@ -1,0 +1,139 @@
+/* Updated Cart Page Styles with Larger Product Images and Responsive Font Sizes */
+
+/* Container for the cart page */
+.cart-page {
+  margin-top: 5%;
+}
+
+/* Heading style */
+.cart-page h1 {
+  padding: 15px !important;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  background-color: rgba(0, 0, 255, 0.072) !important;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Subheading style */
+.cart-page h1 > p {
+  font-size: 19px;
+  margin-top: 30px;
+}
+
+/* Cart item card */
+.cart-page .card {
+  padding: 10px !important;
+  margin-bottom: 20px !important;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Increase the size of the product images */
+.cart-page .card img {
+  height: 150px; /* Adjust the height to your desired size */
+  width: auto; /* Maintain aspect ratio */
+}
+
+/* Responsive Font Sizes for Product Column */
+.cart-page .product-info {
+  align-items: center; /* Allow the product info to expand and fill available space */
+}
+
+/* Adjust font sizes for different screen sizes */
+@media (max-width: 768px) {
+  .cart-page .product-info {
+    font-size: 14px; /* Adjust font size for small screens */
+  }
+}
+
+/* Cart remove button */
+.cart-page .cart-remove-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #ff4d4f;
+  font-size: 18px;
+  margin-left: auto;
+}
+
+/* Cart summary section */
+.cart-page .cart-summary {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Cart total */
+.cart-page .cart-total {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+/* Checkout button style */
+.cart-page .checkout-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.cart-page .checkout-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Custom horizontal line separator */
+.custom-hr {
+  border: none; /* Remove the default border */
+  height: 2px; /* Set the height of the line */
+  background-color: darkorange; /* Set the background color */
+  margin: 10px 15px; /* Adjust the margin to control spacing above and below the line */
+}
+
+/* WhatsApp button styles */
+.button-2 {
+  border-radius: 15px;
+}
+
+.whatsapp-logo {
+  background-color: #25d366; /* WhatsApp green color */
+  color: #fff;
+  align-items: center;
+  border-radius: 15px;
+  font-size: 16px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 5px;
+}
+
+.text-center1 {
+  text-align: center;
+}
+
+.button-without-outline {
+  border: none; /* Remove the border */
+  outline: none; /* Remove the outline */
+}
+
+.custom-whatsapp-btn {
+  display: inline-block; /* Display the button as an inline block */
+  text-align: left; /* Align the button's text to the left */
+  padding: 10px 20px; /* Add padding to the button */
+  border-radius: 15px;
+}
+
+/* Adjust spacing for the WhatsApp logo */
+.whatsapp-logo {
+  margin-right: 5px; /* Add some spacing to the WhatsApp logo */
+}
