@@ -114,11 +114,8 @@ const UpdateProduct = () => {
           <div className="col-md-3">
             <AdminMenu />
           </div>
-          <div className="col-md-9">
+          <div className="col-md-9" style={{backgroundColor: "violet"  }}>
        <h2 style={{ paddingLeft: "1.5rem" }}>PRODUCT UPDATE</h2>
-
-
-
            <br/> <div className="m-1 w-75">
               <Select
                 bordered={false}

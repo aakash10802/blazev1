@@ -104,6 +104,7 @@
 /* WhatsApp button styles */
 .button-2 {
   border-radius: 15px;
+  padding-bottom: 2vh;
 }
 
 .whatsapp-logo {

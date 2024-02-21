@@ -143,33 +143,8 @@ const CartPage = () => {
               {auth?.user?.address ? (
                 <>
                   <div className="mb-3 text-right">
-                  <table className="table">
-  <thead>
-    <tr>
-      <th colSpan="2">Current Address</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Address</td>
-      <td>{auth.user.address.streetName}</td>
-    </tr>
-    <tr>
-      <td>Postal Code:</td>
-      <td>{auth.user.address.postalCode}</td>
-    </tr>
-    <tr>
-      <td>City:</td>
-      <td>{auth.user.address.city}</td>
-    </tr>
-    <tr>
-      <td>State:</td>
-      <td>{auth.user.address.state}</td>
-    </tr>
-    <tr>
-      <td>Country:</td>
-      <td>{auth.user.address.country}</td>
-    </tr>
+                 <table className="table">
+  
     <tr>
       <td colSpan="2" className="text-right">
         <button
@@ -180,7 +155,6 @@ const CartPage = () => {
         </button>
       </td>
     </tr>
-  </tbody>
 </table>
 
                   </div>
@@ -220,9 +194,7 @@ const CartPage = () => {
                     <DropIn
                        options={{
                         authorization: clientToken,
-                        paypal: {
-                          flow: "vault",
-                        },
+                        
                       }}
                       onInstance={(instance) => setInstance(instance)}
                     />
