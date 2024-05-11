@@ -90,203 +90,201 @@ const CartPage = () => {
 
   return (
     <Layout>
-      <div className="cart-page">
+      <div className="container">
         <div className="row">
           <div className="col-md-12">
-            <h1 className="text-center bg-light p-2 mb-1">
+            <h1 className="text-center bg-light p-2 mb-4">
               {!auth?.user ? "Hello Guest" : `Hello ${auth?.user?.name}`}
-              <p className="text-center">
-                {cart?.length
-                  ? `You Have ${cart.length} items in your cart${
-                      auth?.token ? "" : "please login to checkout !"
-                    }`
-                  : " Your Cart Is Empty"}
-              </p>
             </h1>
           </div>
         </div>
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12 p-0 m-0">
-              {cart?.map((p) => (
-                <div className="row card flex-row mb-3" key={p._id}>
-                  <div className="col-md-4 mt-3 mx-3 my-3">
-                    <img
-                      src={`/api/v1/product/product-photo/${p._id}`}
-                      className="card-img-top"
-                      alt={p.name}
-                      width="80%"
-                      height={"100px"}
-                    />
-                  </div>
-                  <div className="col-md-4">
-                    <h2>{p.name}</h2>
-                    <p>{p.description.substring(0, 30)}</p>
-                    <p>Price: ₹{p.price}</p>
-                  </div>
-                  <div className="col-md-2 cart-remove-btn d-flex align-items-center">
-                    <button
-                      className="btn btn-outline-danger text-center w-100"
-                      onClick={() => removeCartItem(p._id)}
-                    >
-                      <FaTrash /> Remove
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="col-md-12 cart-summary">
-              <h2>Cart Summary</h2>
-             
-              <hr />
-              <h4>Total: {totalPrice()} </h4>
-              {auth?.user?.address ? (
-                <>
-                  <div className="mb-3 text-right">
-                  <table className="table">
-  <thead>
-    <tr>
-      <th colSpan="2">Current Address</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Address</td>
-      <td>{auth.user.address.streetName}</td>
-    </tr>
-    <tr>
-      <td>Postal Code:</td>
-      <td>{auth.user.address.postalCode}</td>
-    </tr>
-    <tr>
-      <td>City:</td>
-      <td>{auth.user.address.city}</td>
-    </tr>
-    <tr>
-      <td>State:</td>
-      <td>{auth.user.address.state}</td>
-    </tr>
-    <tr>
-      <td>Country:</td>
-      <td>{auth.user.address.country}</td>
-    </tr>
-    <tr>
-      <td colSpan="2" className="text-right">
-        <button
-          className="btn btn-outline-warning"
-          onClick={() => navigate("/dashboard/user/profile")}
-        >
-          Update Address
-        </button>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-                  </div>
-                </>
-              ) : (
-                <div className="mb-3">
-                  {auth?.token ? (
-                    <button
-                      className="btn btn-outline-warning"
-                      onClick={() => navigate("/dashboard/user/profile")}
-                    >
-                      Update Address
-                    </button>
-                  ) : (
-                    <button
-                      className="btn btn-outline-warning"
-                      onClick={() =>
-                        navigate("/login", {
-                          state: "/cart",
-                        })
-                      }
-                    >
-                      Please Login to checkout
-                    </button>
-                  )}
-                </div>
-              )}
-              <hr />
-              <div className="col-md-6 mt-2 mx-auto">
-                {!clientToken || !auth?.token || !cart?.length ? (
-                  ""
-                ) : (
-                  <>
-                    <p className="lead text-center">
-                      In case of payment failure using <b>GPAY or ANY OTHER UPI MODES</b>, click on <b>Card</b> for transaction.
-                    </p>
-                    <DropIn
-                       options={{
-                        authorization: clientToken,
-                        paypal: {
-                          flow: "vault",
-                        },
-                      }}
-                      onInstance={(instance) => setInstance(instance)}
-                    />
-                    <button
-                      className="btn btn-outline-primary w-70 text-center mb-4"
-                      onClick={handlePayment}
-                      disabled={loading || !instance || !auth?.user?.address}
-                    >
-                      {loading ? "Processing ...." : "Make Payment"}
-                    </button>
-                  </>
-                )}
-              </div>
-              <div className="gap-3 mb-4">
-                <hr className="custom-hr" />
-                {showQRCode ? (
-                  <div className="text-center">
-                    <h3>Please follow the instructions:</h3>
-                    <hr className="danger" />
-                    <li className="lead mt-2">
-                      Share the <b>Screenshot</b> of the product by tapping the button below the QR code.
-                    </li>
-                    <li className="lead mt-2">
-                      Send your <b>Shipping details</b> to the WhatsApp Number where you are redirected.
-                    </li>
-                    <li className="lead mt-2">
-                      After getting a reply from our side, you can inquire about <b>Payment modes</b>, etc.
-                    </li>
-                    <li className="lead mt-2">
-                      After placing an order via WhatsApp, you can select the mode of Shipment.
-                    </li>
-                    <div>
-                      <h3>G-PAY (ID)</h3>
-                      <img
-                        src="\images\qr.jpg"
-                        alt="contactus"
-                        style={{ width: "20%" }}
-                      />
-                    </div>
-                    <div>
-                      <button className="btn btn-outline-success w-70 text-center">
-                        <a
-                          href="https://wa.me/message/6LXGRUTGFXPOF1"
-                          className="custom-link"
+        <div className="row">
+          <div className="col-md-12">
+            <p className="text-center">
+              {cart?.length
+                ? `You Have ${cart.length} items in your cart${
+                    auth?.token ? "" : ", please login to checkout!"
+                  }`
+                : " Your Cart Is Empty"}
+            </p>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-12">
+            <div className="table-responsive">
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th>Product</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {cart?.map((p) => (
+                    <tr key={p._id}>
+                      <td>
+                        <img
+                          src={`/api/v1/product/product-photo/${p._id}`}
+                          alt={p.name}
+                          className="img-fluid product-image"
+                        />
+                      </td>
+                      <td>
+                        <h2>{p.name}</h2>
+                        <p>{p.description.substring(0, 30)}</p>
+                      </td>
+                      <td>₹{p.price}</td>
+                      <td>
+                        <button
+                          className="btn btn-outline-danger"
+                          onClick={() => removeCartItem(p._id)}
                         >
-                          SEND THROUGH WHATSAPP &nbsp;
-                          <span className="whatsapp-logo">
-                            <RiWhatsappLine />
-                          </span>
-                        </a>
-                      </button>
-                    </div>
-                  </div>
-                ) : (
-                  <button
-                    className="btn btn-outline-primary w-70 text-center mb-4"
-                    onClick={showQRCodeSection}
-                  >
-                    Show QR Code
-                  </button>
-                )}
-              </div>
+                          <FaTrash /> Remove
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
+        </div>
+        <div className="row">
+          <div className="col-md-12">
+            <h2>Cart Summary</h2>
+            <hr />
+            <h4>Total: {totalPrice()} </h4>
+          </div>
+        </div>
+        {/* Address Section */}
+        {auth?.user?.address ? (
+          // Display user's address if available
+          <div className="row">
+            <div className="col-md-12">
+              <h3>Current Address</h3>
+              <p>
+                <strong>Address:</strong> {auth.user.address.streetName}
+                <br />
+                <strong>Postal Code:</strong> {auth.user.address.postalCode}
+                <br />
+                <strong>City:</strong> {auth.user.address.city}
+                <br />
+                <strong>State:</strong> {auth.user.address.state}
+                <br />
+                <strong>Country:</strong> {auth.user.address.country}
+              </p>
+              <button
+                className="btn btn-outline-warning"
+                onClick={() => navigate("/dashboard/user/profile")}
+              >
+                Update Address
+              </button>
+            </div>
+          </div>
+        ) : (
+          // Display a button to update address or login if not logged in
+          <div className="row">
+            <div className="col-md-12">
+              {auth?.token ? (
+                <button
+                  className="btn btn-outline-warning"
+                  onClick={() => navigate("/dashboard/user/profile")}
+                >
+                  Update Address
+                </button>
+              ) : (
+                <button
+                  className="btn btn-outline-warning"
+                  onClick={() =>
+                    navigate("/login", {
+                      state: "/cart",
+                    })
+                  }
+                >
+                  Please Login to checkout
+                </button>
+              )}
+            </div>
+          </div>
+        )}
+        <hr />
+        {/* Payment Section */}
+        <div className="row">
+          <div className="col-md-12">
+            {clientToken && auth?.token && cart?.length > 0 && (
+              <>
+                <p className="lead text-center">
+                  In case of payment failure using <b>GPAY or ANY OTHER UPI MODES</b>, click on <b>Card</b> for transaction.
+                </p>
+                <DropIn
+                  options={{
+                    authorization: clientToken,
+                  }}
+                  onInstance={(instance) => setInstance(instance)}
+                />
+                <button
+                  className="btn btn-outline-primary w-100"
+                  onClick={handlePayment}
+                  disabled={loading || !instance || !auth?.user?.address}
+                >
+                  {loading ? "Processing ...." : "Make Payment"}
+                </button>
+              </>
+            )}
+          </div>
+        </div>
+        <hr />
+        {/* QR Code Section */}
+        <div className="row">
+          <div className="col-md-12 text-center">
+            {showQRCode ? (
+              <div>
+                <h3>Please follow the instructions:</h3>
+                <hr className="danger" />
+                <ul className="list-unstyled">
+                  <li className="lead mt-2">
+                    Share the <b>Screenshot</b> of the product by tapping the button below the QR code.
+                  </li>
+                  <li className="lead mt-2">
+                    Send your <b>Shipping details</b> to the WhatsApp Number where you are redirected.
+                  </li>
+                  <li className="lead mt-2">
+                    After getting a reply from our side, you can inquire about <b>Payment modes</b>, etc.
+                  </li>
+                  <li className="lead mt-2">
+                    After placing an order via WhatsApp, you can select the mode of Shipment.
+                  </li>
+                </ul>
+                <h3>G-PAY (ID)</h3>
+                <img
+                  src="/images/qr.jpg"
+                  alt="contactus"
+                  style={{ width: "20%" }}
+                /><br/>
+                <button className="btn btn-outline-success mt-4">
+                  <a
+                    href="https://wa.me/message/6LXGRUTGFXPOF1"
+                    className="custom-link"
+                  >
+                    SEND THROUGH WHATSAPP &nbsp;
+                    <span className="whatsapp-logo">
+                      <RiWhatsappLine />
+                    </span>
+                  </a>
+                </button>
+              </div>
+            ) : (
+              <button
+                className="btn btn-outline-primary w-100"
+                onClick={showQRCodeSection}
+              >
+                Show QR Code
+              </button>
+            )}
+          </div>
+          <br/>
         </div>
       </div>
     </Layout>

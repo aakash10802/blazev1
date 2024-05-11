@@ -48,9 +48,9 @@ const CategoryProduct = () => {
         <h6 className="text-center">{products?.length} results found</h6>
         <div className="row">
           <div className="col-md-9 offset-1">
-            <div className="col-md-3">
+            <div className="col-md-6">
               {products?.map((p) => (
-                <div className="card m-2" key={p._id}>
+                <div className="card m-1" key={p._id}>
                   <img
                     src={`/api/v1/product/product-photo/${p._id}`}
                     className="card-img-top"
@@ -73,13 +73,13 @@ const CategoryProduct = () => {
                     <b/>
                     <div className="card-name-price">
                       <button
-                        className="btn btn-info ms-2"
+                        className="btn btn-info "
                         onClick={() => navigate(`/product/${p.slug}`)}
                       >
                         More Details
                       </button>
                       <button
-                        className="btn btn-dark ms-1"
+                        className="btn btn-dark col-md-xs"
                         onClick={() => handleAddToCart(p)}
                       >
                         ADD TO CART
